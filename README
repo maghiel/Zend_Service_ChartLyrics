@@ -1,0 +1,70 @@
+Zend_Service_ChartLyrics
+------------------------
+
+---------------
+* Introduction
+---------------
+This is my first GitHub repository, so I needed a small project to test it with.
+As I was already working on the Zend_Service_ChartLyrics proposal, this tiny project
+seemed to be a good candidate.
+
+Regards,
+Maghiel
+
+-------------------------
+* ChartLyrics Lyrics API
+-------------------------
+"The ChartLyrics API supports both the SOAP and GET protocol. Allowing users to search
+for lyrics using the artist name, song title or lyric text as search query."
+...
+"Our Simple Object Access Protocol Application Programming Interface is available to
+developers and end users who wish to use our database for their music project,
+website or application."
+...
+Source: http://www.chartlyrics.com/api.aspx
+
+
+---------------------------
+* Zend_Service_ChartLyrics
+---------------------------
+Zend_Service_ChartLyrics is a SOAP client wrapper for the Chartlyrics API.
+
+Currently the component is a proposal draft. 
+Visit http://framework.zend.com/wiki/display/ZFPROP/Zend_Service_Chartlyrics+-+Maghiel+Dijksman
+for detailed information.
+
+
+----------
+* License
+----------
+New BSD License (http://framework.zend.com/license/new-bsd)
+
+New BSD License
+
+Copyright (c) 2005-2010, Zend Technologies USA, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.
+
+    * Neither the name of Zend Technologies USA, Inc. nor the names of its
+      contributors may be used to endorse or promote products derived from this
+      software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
