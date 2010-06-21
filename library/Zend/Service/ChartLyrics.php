@@ -155,9 +155,16 @@ class Zend_Service_ChartLyrics
      * @return stdClass[]           Each call for artist and title combination
      *                              can return a total of 25 possible songs
      *                              orderd by ChartLyrics rank.
+     * @throws Zend_Service_ChartLyrics_Exception
      */
     public function searchLyricText($lyricText)
     {
+        if (1 > str_word_count($lyricText)) {
+            throw new Zend_Service_ChartLyrics_Exception(
+                'At least one word is needed to search by lyric text'
+            );
+        }
+        
         $cacheId = $this->_normalizeCacheId(array(
             'searchLyricText',
             $lyricText
