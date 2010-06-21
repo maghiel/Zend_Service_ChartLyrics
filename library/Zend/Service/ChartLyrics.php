@@ -147,8 +147,10 @@ class Zend_Service_ChartLyrics
     /**
      * Search for lyrics and return the lyricId and lyricChecksum
      * for the GetLyric function.
+     * For SearchLyricText at least one word is needed.
+     * Stop-words are removed from the search query,
+     * see the General section for the stop words.
      *
-     * @todo Implement
      * @param string $lyricText     The lyric text to search.
      * @return stdClass[]           Each call for artist and title combination
      *                              can return a total of 25 possible songs
@@ -156,7 +158,29 @@ class Zend_Service_ChartLyrics
      */
     public function searchLyricText($lyricText)
     {
-        // TODO: implement
+        $cacheId = $this->_normalizeCacheId(array(
+            'searchLyricText',
+            $lyricText
+        ));
+
+        if (self::hasCache()) {
+            if (false !== ($result = self::$_cache->load($cacheId))) {
+                return $result;
+            }
+        }
+
+        try {
+            $result = $this->_client->SearchLyricText(array(
+                'lyricText' => $lyricText
+            ));            
+        } catch (SoapFault $e) {
+            self::_saveToCache(null, $cacheId);
+            return;
+        }
+
+        self::_saveToCache($result, $cacheId, 'SearchLyricTextResult');
+
+        return $result->SearchLyricTextResult;
     }
     
     /**
