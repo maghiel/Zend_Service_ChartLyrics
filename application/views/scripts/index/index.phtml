@@ -1,43 +1,13 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
+<div>
+    <h1>Zend_Service_ChartLyrics</h1>
 
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
+    <h2>searchLyric()</h2>
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-    }
-
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
-</style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
-
-    <h3>This is your project's main page</h3>
-
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
-    </div>
+    <?php if ($this->lyrics): ?>
+    <ul>
+        <?php foreach ($this->lyrics as $lyric): ?>
+        <li><?php print_r($lyric); ?></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
 </div>
