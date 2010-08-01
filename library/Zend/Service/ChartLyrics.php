@@ -154,7 +154,7 @@ class Zend_Service_ChartLyrics
      * @param string $lyricText     The lyric text to search.
      * @return stdClass[]           Each call for artist and title combination
      *                              can return a total of 25 possible songs
-     *                              orderd by ChartLyrics rank.
+     *                              ordered by ChartLyrics rank.
      * @throws Zend_Service_ChartLyrics_Exception
      */
     public function searchLyricText($lyricText)
