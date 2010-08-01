@@ -89,7 +89,7 @@ class Zend_Service_ChartLyrics
         $this->_client = new Zend_Soap_Client(self::WSDL_URL, array(
            'soapVersion'    => self::SOAP_VERSION,
         ));
-        
+                
         $this->_client->setUserAgent('Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3');
     }
 
@@ -107,8 +107,8 @@ class Zend_Service_ChartLyrics
      *
      * @param string $artist    The artist name.
      * @param string $song      The song title.
-     *
      * @return StdClass[]
+     * @throws Zend_Service_ChartLyrics_Exception
      */
     public function searchLyric($artist = null, $song = null)
     {
@@ -130,15 +130,11 @@ class Zend_Service_ChartLyrics
                 'song'   => $song
             ));
         } catch (SoapFault $e) {
-            // In some rare situations the webservice returns invalid http headers
-            // or takes to long to respond.            
-            self::_saveToCache(null, $cacheId);
-            return;
-        } catch (Exception $e) {            
-            self::_saveToCache(null, $cacheId);
-            return;
+            throw new Zend_Service_ChartLyrics_Exception(
+                'A SoapFault Exception occurred. The ChartLyrics webservice might'
+                . ' be offline. SoupFault message: ' . $e->getMessage());
         }
-
+ 
         self::_saveToCache($result, $cacheId, 'SearchLyricResult');
         
         return $result->SearchLyricResult;
@@ -181,8 +177,9 @@ class Zend_Service_ChartLyrics
                 'lyricText' => $lyricText
             ));            
         } catch (SoapFault $e) {
-            self::_saveToCache(null, $cacheId);
-            return;
+            throw new Zend_Service_ChartLyrics_Exception(
+                'A SoapFault Exception occurred. The ChartLyrics webservice might'
+                . ' be offline. SoupFault message: ' . $e->getMessage());
         }
 
         self::_saveToCache($result, $cacheId, 'SearchLyricTextResult');
@@ -217,7 +214,9 @@ class Zend_Service_ChartLyrics
                 'lyricCheckSum' => $checksum
             ));
         } catch (SoapFault $e) {
-            self::_saveToCache(null, $cacheId);
+            throw new Zend_Service_ChartLyrics_Exception(
+                'A SoapFault Exception occurred. The ChartLyrics webservice might'
+                . ' be offline. SoupFault message: ' . $e->getMessage());
         }
 
         self::_saveToCache($lyric, $cacheId, 'GetLyricResult');
@@ -257,8 +256,9 @@ class Zend_Service_ChartLyrics
                 'song'   => $song
             ));
         } catch (SoapFault $e) {
-            self::_saveToCache(null, $cacheId);
-            return;
+            throw new Zend_Service_ChartLyrics_Exception(
+                'A SoapFault Exception occurred. The ChartLyrics webservice might'
+                . ' be offline. SoupFault message: ' . $e->getMessage());
         }
 
         if (false === $canBeRelatedLyric) {

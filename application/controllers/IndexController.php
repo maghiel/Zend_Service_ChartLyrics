@@ -20,16 +20,22 @@ class IndexController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+        Zend_Debug::dump($this->_service->getClient());
+       
+        $this->_service->clearCache();
         // UC-01: search for lyrics of the artist Bad Religion and retreive 
         // the LyricId and LyricChecksums of these lyrics. Pass the results to
         // getLyric to retrieve the actual lyrics.       
         $lyrics = $this->_service->searchLyric('Bad Religion');
         
         if ($lyrics) {
+            Zend_Debug::dump($lyrics);
             foreach ($lyrics as $lyricResult) {
                 $lyric = $this->_service->getLyric(
                     $lyricResult->lyricID, $lyricResult->lyricChecksum
                     );
+                
+                Zend_Debug::Dump($lyric);
             }
         }
                
@@ -53,6 +59,7 @@ class IndexController extends Zend_Controller_Action
             'Bad Religion', 'Generator'
             );
         
+        Zend_Debug::dump($lyric);
         $this->view->lyric           = $lyric->Lyric;
         $this->view->lyricUrl        = $lyric->LyricUrl;
         $this->view->lyricCorrectUrl = $lyric->LyricCorrectUrl;
