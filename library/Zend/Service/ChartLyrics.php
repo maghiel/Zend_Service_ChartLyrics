@@ -107,8 +107,8 @@ class Zend_Service_ChartLyrics
      *
      * @param string $artist    The artist name.
      * @param string $song      The song title.
-     * @return StdClass[]
-     * @throws Zend_Service_ChartLyrics_Exception
+     * @return Zend_Service_ChartLyrics_Entity_LyricSearchResult[]
+     * @throws Zend_Service_ChartLyrics_Exception 
      */
     public function searchLyric($artist = null, $song = null)
     {
@@ -134,7 +134,9 @@ class Zend_Service_ChartLyrics
                 'A SoapFault Exception occurred. The ChartLyrics webservice might'
                 . ' be offline. SoupFault message: ' . $e->getMessage());
         }
- 
+        
+        // TODO: implement Zend_Service_ChartLyrics_Entity_LyricSearchResult
+        
         self::_saveToCache($result, $cacheId, 'SearchLyricResult');
         
         return $result->SearchLyricResult;
@@ -148,7 +150,8 @@ class Zend_Service_ChartLyrics
      * see the General section for the stop words.
      *
      * @param string $lyricText     The lyric text to search.
-     * @return stdClass[]           Each call for artist and title combination
+     * @return Zend_Service_ChartLyrics_Entity_LyricSearchResult[]
+     *                              Each call for artist and title combination
      *                              can return a total of 25 possible songs
      *                              ordered by ChartLyrics rank.
      * @throws Zend_Service_ChartLyrics_Exception
@@ -182,6 +185,8 @@ class Zend_Service_ChartLyrics
                 . ' be offline. SoupFault message: ' . $e->getMessage());
         }
 
+        // TODO: implement Zend_Service_ChartLyrics_Entity_LyricSearchResult
+        
         self::_saveToCache($result, $cacheId, 'SearchLyricTextResult');
 
         return $result->SearchLyricTextResult;
@@ -192,7 +197,8 @@ class Zend_Service_ChartLyrics
      *
      * @param int       $id         The lyric ID.
      * @param string    $checksum   The lyric Checksum.
-     * @return stdClass
+     * @return Zend_Service_ChartLyrics_Entity_Lyric
+     * @throws Zend_Service_ChartLyrics_Exception
      */
     public function getLyric($id, $checksum)
     {
@@ -219,6 +225,7 @@ class Zend_Service_ChartLyrics
                 . ' be offline. SoupFault message: ' . $e->getMessage());
         }
 
+        // TODO: implement returning Zend_Service_ChartLyrics_Entity_Lyric 
         self::_saveToCache($lyric, $cacheId, 'GetLyricResult');
 
         return $lyric->GetLyricResult;
@@ -234,7 +241,8 @@ class Zend_Service_ChartLyrics
      *                          returns a result instance, in favour of encouraging
      *                          users to add the lyric if not found in their
      *                          database.
-     * @return stdClass|null
+     * @return Zend_Service_ChartLyrics_Entity_Lyric|null
+     * @throws Zend_Service_ChartLyrics_Exception
      */
     public function searchLyricDirect($artist, $song, $canBeRelatedLyric = true)
     {
@@ -270,6 +278,8 @@ class Zend_Service_ChartLyrics
             }
         }
 
+        // TODO: implement returning Zend_Service_ChartLyrics_Entity_Lyric 
+        
         self::_saveToCache($result, $cacheId, 'SearchLyricDirectResult');
         
         return $result->SearchLyricDirectResult;
@@ -290,7 +300,7 @@ class Zend_Service_ChartLyrics
      */
     public function addLyric($trackId, $trackChecksum, $lyric, $emailAddress) 
     {
-        
+        // TODO: implement
     }
     
     /**
