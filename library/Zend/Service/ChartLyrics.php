@@ -276,6 +276,24 @@ class Zend_Service_ChartLyrics
     }
     
     /**
+     * Add a lyric to the ChatLyrics database
+     * 
+     * @param string $trackId       The trackId provided by one of the lyric 
+     *                              search functions.
+     * @param string $trackChecksum The trackCheckSum provided by one of the 
+     *                              lyric search functions.
+     * @param string $lyric         The lyric to be added.
+     * @param string $emailAddress  The email address of the submitter of the
+     *                              lyric.
+     * @return bool|string          If the checksum does not match the id 
+     *                              and error message is returned.
+     */
+    public function addLyric($trackId, $trackChecksum, $lyric, $emailAddress) 
+    {
+        
+    }
+    
+    /**
      * Returns the set cache
      *
      * @return Zend_Cache_Core The set cache
