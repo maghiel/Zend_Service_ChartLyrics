@@ -35,6 +35,7 @@
  * @version    $Id:$
  */
 class Zend_Service_ChartLyrics_Entity_Lyric
+    implements Zend_Service_ChartLyrics_Entity_HasTrackInterface
 {
     /**
      * Id required to retrieve the song using GetLyric function, The ID must 
@@ -188,7 +189,7 @@ class Zend_Service_ChartLyrics_Entity_Lyric
     {
         $this->_song = $song;
         
-        return self;
+        return $this;
     }
 
     /**
